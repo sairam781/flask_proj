@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .slide{
+            height: 100%;
+            width:250px ;
+            position: absolute;
+            background-color: rgb(236, 228, 228);
+            transition: 0.5s ease;
+            transform: translateX(-250px);
+        }
+        h3{
+            pointer-events: none;
+            text-align: center;
+            font-weight: 800;
+            padding: 15px 0;
+            padding-right: 15px;
+            pointer-events: none;
+
+        }
+        h3 i{
+            width: 40px;
+            text-align: center;
+        }
+        ul li{
+            list-style: none;
+        }
+        ul li a{
+            color:Black ;
+            font-weight:600 ;
+            padding:10px 0 ;
+            display: block;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: 0.2s ease ease-out;
+
+        }
+        ul li a i{
+            width: 40px;
+            text-align: center;
+        }
+        .inp{
+            display: none;
+            visibility: hidden;
+            -webkit-appearance: none;
+
+        }
+        .toggle{
+            position: absolute;
+            height: 27px;
+            width: 27px;
+            top:10px;
+            left: 15px;
+            z-index:1;
+            cursor: pointer;
+            border-radius: 2px;
+            background-color:white;
+            box-shadow: 0 0 10px black;
+        }
+        .toggle .common{
+             position:absolute;
+             height: 2px;
+             width: 20px;
+             background-color:black;
+             border-radius: 50px;
+             transition:0.3s ease ;
+
+        }
+        .toggle .top-line{
+            top:30%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .toggle .mid-line{
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .toggle .bottom-line{
+            top:70%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .inp:checked ~ .toggle .top-line{
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+        }
+        .inp:checked ~ .toggle .bottom-line{
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(-45deg);
+        }
+        .inp:checked ~ .toggle .mid-line{
+            opacity: 0;
+             transform: translateX(20px);
+         }
+        .inp:checked ~.slide{
+            transform: translateX(0);
+            box-shadow: 0 0 15px rgba(0, 0,0,0.5);
+        }
+        .inp1{
+            border: none;
+            text-decoration: none;
+            width: 100%;
+        }
+        .inp1:focus{
+            outline: none;
+        }
+       .slogo{
+        display: flex;
+        width: 300px;
+        height: 20px;
+        align-items: center;
+        justify-content: center;
+        border: solid 2px black;
+        margin: auto;
+        margin-top: 20px;
+        padding: 14px;
+        border-radius: 15px;
+        
+       }
+      .header{
+        display: flex;
+      }
+      table{
+            margin-top: 50px;
+        }
+        tr,td{
+            padding: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <label>
+        
+        <input class="inp" type="checkbox">
+        <div class="toggle">
+            <span class="top-line common"></span>
+            <span class="mid-line common"></span>
+            <span class="bottom-line common"></span>
+        </div>
+        <div class="slide">
+            <h3> <i class="fas fa-user"></i>Hello {{name}}</h3>
+            <ul>
+                <li><a href="dashboard.html"> <i class="fas fa-dashboard"></i>My Dashboard</a></li>
+                <li><a href="/cart"> <i class="fas fa-shopping-cart"></i>My Cart</a></li>
+                <li><a href="/favourite"> <i class="fas fa-heart"></i>My Favourite</a></li>
+                
+                <li><a href="/"> <i class="fas fa-sign-out"></i>Log Out</a></li>
+
+            </ul>
+        </div>
+    </label>
+    <div class="slogo">
+    <input class="inp1" type="text"  placeholder="Search" ><i class="fa-solid fa-magnifying-glass"></i>
+   
+</div>
+</div>
+<center>
+    <h1>My Orders</h1>
+    <table>
+        {% for order in d%}
+        <tr>
+            <td>Order Id </td>
+            <td>Food Name</td>
+            
+            <td>Price</td>
+            <td>Status</td>
+
+        </tr>
+        <tr>
+            <td>{{order[0]}}</td>
+            <td>{{order[2]}}</td>
+            <td>{{order[3]}}</td>
+            <td>{{order[4]}}</td>
+      
+        </tr>
+        {% endfor %}
+    </table></center>
+    
+</body>
+</html>

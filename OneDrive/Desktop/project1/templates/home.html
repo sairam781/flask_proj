@@ -1,0 +1,379 @@
+<html></html>
+ <head>
+  <title>
+   Food Delivery
+  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <style>
+    #flash-messages {
+            background: #e74c3c;
+            color: rgb(184, 26, 26);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #flash-messages.fade-out {
+            opacity: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+  </style>
+ </head>
+ <body>
+    <form method="POST" action="/">
+       
+    <!-- {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %} -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const flashMessages = document.getElementById('flash-messages');
+        if (flashMessages) {
+            setTimeout(() => {
+                flashMessages.classList.add('fade-out');
+            }, 5000); // 5 seconds
+        }
+    });
+    </script>
+  <div class="header">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul id="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <i class="fa-solid fa-utensils fa-2x fa-fw"></i>
+   <img alt="Logo"  src="/static/image/logo2.png">
+   <div class="nav-links">
+    <a href="/home"><i class="fas fa-home"></i>
+     HOME
+
+    </a>
+    <a href="/about"><i class="fas fa-id-card"></i>
+     ABOUT
+    </a>
+    <a href="/signin">
+     <i class="fas fa-user SIGN">
+     </i>
+     SIGN IN
+    </a>
+    <a href="/login">
+        <i class="fas fa-user login">
+        </i>
+        LOG IN
+       </a>
+    <a href="/admin">
+        <i class="fa-solid fa-user-tie"></i>
+        ADMIN
+       </a>  
+   </div>
+   
+</body>
+</html>
+  </div>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2500">
+            <img src="/static/image/chicken highquality.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>"Savor the Juiciest Chicken"</h5>
+                <p>"Indulge in tender, flavorful chicken, marinated with rich spices, and cooked to perfection. Whether grilled, fried, or roasted, our chicken dishes promise a burst of flavor with every bite!"</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2500">
+            <img src="/static/image/south indian food.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>"Authentic South Indian Delights"</h5>
+                <p>"Experience the rich flavors of South India with our freshly prepared dishes. From soft and fluffy idlis to crispy dosas, we bring the taste of traditional South Indian cuisine to your plate. Enjoy meals that are a perfect blend of spices and taste, made with love and the finest ingredients."</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2500">
+            <img src="/static/image/pizza high.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>"Delicious, Cheesy Pizzas"</h5>
+                <p>"Satisfy your cravings with our range of mouth-watering pizzas. From classic Margherita to loaded toppings, every slice is a burst of flavor with gooey cheese, fresh ingredients, and a crispy crust. Perfect for a quick bite or a full meal, our pizzas are made to make your day!"</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2500">
+            <img src="/static/image/burger high.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>"Bite into Our Delicious Burgers"</h5>
+                <p>"Sink your teeth into our juicy burgers, made with fresh ingredients and packed with flavor. From the classic beef burger to unique chicken and veggie options, our burgers are a hearty meal that satisfies your cravings.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2500">
+            <img src="/static/image/cake high.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>"Celebrate with Our Delightful Cakes"</h5>
+                <p>"From classic vanilla to rich chocolate, our cakes are freshly baked to bring joy to every celebration. Each slice is a sweet treat with fluffy layers and creamy frostings that melt in your mouth."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="main-content">
+   <div class="section-title">
+    What's on your mind?
+   </div>
+   <div class="categories">
+    <div class="category">
+        <a href="">
+     <img alt="Biryani" height="150" src="\static\image\biriyani.jpeg" width="150"/>
+    </a>
+     <p>
+      Biryani
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Pizzas" height="150" src="\static\image\pizza.jpeg" width="150"/>
+    </a>
+     <p>
+      Pizzas
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Parotta" height="150" src="\static\image\paroto.jpeg" width="150"/>
+    </a>
+     <p>
+      Parotta
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Burgers" height="150" src="\static\image\burger.jpeg" width="150"/>
+    </a>
+     <p>
+      Burgers
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Chinese" height="100" src="\static\image\chinese food.jpeg" width="100"/>
+    </a>
+     <p>
+      Chinese
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Idli" height="100" src="\static\image\idly.jpeg" width="100"/>
+    </a>
+     <p>
+      Idli
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Dosa" height="100" src="\static\image\dosa.jpeg" width="100"/></a>
+     <p>
+      Dosa
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="North Indian" height="100" src="\static\image\north indian food.jpeg" width="100"/></a>
+     <p>
+      North Indian
+     </p>
+    </div>
+    <div class="category">
+        <a href="">
+     <img alt="Cakes" height="100" src="\static\image\cake.jpeg" width="100"/></a>
+     <p>
+      Cakes
+     </p>
+    </div>
+    <div class="category"><a href="">
+     <img alt="South Indian" height="100" src="\static\image\south.jpeg" width="100"/></a>
+     <p>
+      South Indian
+     </p>
+    </div>
+   </div>
+   <div class="section-title">
+    Top restaurant chains in Chennai
+   </div>
+   <div class="restaurants">
+    <div class="restaurant">
+        <a href="">
+     <img alt="Chinese Wok" height="120" src="\static\image\chinese rest.jpg" width="200"/>
+     <div class="details">
+      <div class="title">
+       <a href="/login">Chinese Wok</a>
+      </div>
+      <div class="info">
+       Chinese, Asian, Tibetan, Desserts
+       <br/>
+       Old Mahabalipuram Road OMR
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.4 - 25-30 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+    <div class="restaurant">
+        <a href="">
+     <img alt="Burger King" height="120" src="\static\image\burgerking restuarat.jpeg" width="200"/>
+     <div class="details">
+      <div class="title">
+       <a href="/login">Burger King</a>
+      </div>
+      <div class="info">
+       Burgers, American
+       <br/>
+       Kancheepuram
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.3 - 30-35 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+    <div class="restaurant">
+        <a href="">
+     <img alt="KFC" height="120" src="\static\image\kfc restuarat.jpeg" width="200"/>
+     <div class="details">
+      <div class="title">
+        <a href="/login">KFC </a>
+      </div>
+      <div class="info">
+       Burgers, Fast Food, Rolls &amp; Wraps
+       <br/>
+       Sholinganallur
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.3 - 15-20 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+    <div class="restaurant">
+        <a href="">
+     <img alt="McDonald's" height="120" src="\static\image\mcdonalds.jpeg" width="200"/>
+     <div class="details">
+      <div class="title">
+        <a href="/login">McDonald's</a>
+      </div>
+      <div class="info">
+       Burgers, Beverages, Cafe, Desserts
+       <br/>
+       Sekaran Mall
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.4 - 25-30 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+    <div class="restaurant">
+        <a href="">
+     <img alt="MOJO Pizza - 2X Toppings" height="120" src="\static\image\mozopizza.jpeg" width="200"/>
+     <div class="details">
+      <div class="title">
+        <a href="/login">MOJO Pizza - 2X Toppings</a>
+      </div>
+      <div class="info">
+       Pizzas, Italian, Fast Food, Desserts
+       <br/>
+       Parameswaran Nagar
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.4 - 20-30 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+    <div class="restaurant">
+        <a href="">
+     <img alt="Daily Kitchen - Homely Meals" height="120" src="\static\image\daily kithcen.jpeg" width="200"/>
+     <div class="details">
+      <div class="title">
+        <a href="/login">Daily Kitchen - Homely Meals</a>
+      </div>
+      <div class="info">
+       Home Food, Indian, Thalis
+       <br/>
+       Parameswaran Nagar
+      </div>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <span>
+        4.4 - 20-30 mins
+       </span>
+      </div>
+     </div>
+    </a>
+    </div>
+   </div>
+  </div>
+</form>
+ </body>
+</html>

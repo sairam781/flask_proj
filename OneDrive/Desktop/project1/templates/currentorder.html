@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>currentorder</title>
+    <style>
+        td,tr{
+            padding: 10px;
+        }
+        div{
+           border: 2px solid black;
+           
+
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Current Orders</h1>
+    <table>
+        {% for orders in result%}
+        <tr>
+            <td>order id:</td>
+            <td>{{orders[3]}}</td> </tr>
+            <tr>
+                <td>User Name</td>
+                
+                <td>Email</td>
+                <td>Phone.no</td>
+            </tr>
+            <tr>
+                <td>{{orders[0]}}</td>
+                <td>{{orders[1]}}</td>
+                <td>{{orders[2]}}</td>
+               
+            </tr>
+            <div>
+                <tr>
+                    <td>{{orders[4]}}</td>
+                    <td>{{orders[5]}}</td>
+                  
+                    <td></td>
+                    <td>
+                    <form action="{{ url_for('update', order_id=orders[3]) }}"> <button type="submit">Approve</button></form></td>
+                </tr>
+            </div>
+
+            {% endfor %}
+    </table>
+</center>
+</body>
+</html>

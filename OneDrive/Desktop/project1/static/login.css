@@ -1,0 +1,74 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/static/image/food\ background\ login.jpg') no-repeat center center/cover;
+    font-family: 'Arial', sans-serif;
+}
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 300px;
+}
+.login-container h2 {
+    color: rgb(226, 57, 57);
+    margin-bottom: 20px;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    display:inline-block;
+}
+.input-group input {
+   
+    padding: 10px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    
+}
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: black;
+}
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.options input {
+    margin-right: 5px;
+}
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    color: #4a00e0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.login-btn:hover{
+    background-color: blue;
+    color: black;
+}
+.register-link {
+    color: white;
+    margin-top: 10px;
+    display: block;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* You can add some CSS styling here if needed */
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST" action='/login'>
+            {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul id="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="identifier" placeholder="Username or phone number" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required >
+            </div>
+            <div class="options">
+                <label style="color: rgb(226, 57, 57);">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="/forgot-password" style="color: blue;">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <a href="/signin" class="register-link" style="color: blue;">Don't have an account? Register</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide{
+            height: 100%;
+            width:250px ;
+            position: absolute;
+            transition: 0.5s ease;
+            transform: translateX(-250px);
+        }
+        h3{
+            pointer-events: none;
+            
+            font-weight: 800;
+            padding: 15px 0;
+            padding-right: 15px;
+            pointer-events: none;
+
+        }
+        h3 i{
+            width: 40px;
+            text-align: center;
+        }
+        ul li{
+            list-style: none;
+        }
+        ul li a{
+            color:Black ;
+            font-weight:600 ;
+            padding:10px 0 ;
+            display: block;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: 0.2s ease ease-out;
+
+        }
+        ul li a i{
+            width: 40px;
+            text-align: center;
+        }
+        .inp{
+            display: none;
+            visibility: hidden;
+            -webkit-appearance: none;
+
+        }
+        .toggle{
+            position: absolute;
+            height: 27px;
+            width: 27px;
+            top:10px;
+            left: 15px;
+            z-index:1;
+            cursor: pointer;
+            border-radius: 2px;
+            background-color:white;
+            box-shadow: 0 0 10px black;
+        }
+        .toggle .common{
+             position:absolute;
+             height: 2px;
+             width: 20px;
+             background-color:black;
+             border-radius: 50px;
+             transition:0.3s ease ;
+
+        }
+        .toggle .top-line{
+            top:30%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .toggle .mid-line{
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .toggle .bottom-line{
+            top:70%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .inp:checked ~ .toggle .top-line{
+            left: 2px;
+            top: 14px;
+            width: 23px;
+            transform: rotate(45deg);
+        }
+        .inp:checked ~ .toggle .bottom-line{
+            left: 2px;
+            top: 14px;
+            width: 23px;
+            transform: rotate(-45deg);
+        }
+        .inp:checked ~ .toggle .mid-line{
+            opacity: 0;
+             transform: translateX(20px);
+         }
+        .inp:checked ~.slide{
+            transform: translateX(0);
+            box-shadow: 0 0 15px rgba(0, 0,0,0.5);
+        }
+        .inp1{
+            border: none;
+            text-decoration: none;
+            width: 100%;
+        }
+        .inp1:focus{
+            outline: none;
+        }
+       .slogo{
+        display: flex;
+        width: 350px;
+        height: 20px;
+        align-items: center;
+        justify-content: center;
+        border: solid 3px black;
+        margin: auto;
+        margin-top: 20px;
+        padding: 17px;
+        border-radius: 20px;
+    
+       }
+      .header{
+        display: flex;
+      }
+      button{
+        border: none;
+        background-color: rgb(236, 228, 228);
+      }
+      .continerss{
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        margin-left: 150px;
+        margin-right: 150px;
+       
+      }
+    .image-1{
+        padding: 10px;
+    }
+  body{
+    background-image: url(/static/image/back2.jpg);
+    background-size: cover;
+  }
+  #flash-messages {
+            background: #e74c3c;
+            color: rgb(184, 26, 26);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #flash-messages.fade-out {
+            opacity: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+  </style>
+ </head>
+ <body>
+    </style>
+</head>
+<body>
+    
+<form action="/userdashboard" method="get">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flashMessages = document.getElementById('flash-messages');
+            if (flashMessages) {
+                setTimeout(() => {
+                    flashMessages.classList.add('fade-out');
+                }, 3000); // 3 seconds
+            }
+        });
+        </script>
+       
+    <div>
+       
+    </div>
+    <div class="header">
+    <label>
+        
+        <input class="inp" type="checkbox">
+        <div class="toggle">
+            <span class="top-line common"></span>
+            <span class="mid-line common"></span>
+            <span class="bottom-line common"></span>
+        </div>
+        <div class="slide">
+            
+    
+            <ul>
+                <br><br>
+                <h3> <i class="fas fa-user"></i>Hello {{name}}</h3>
+                <li><a href="/cart"><i class="fas fa-shopping-cart"></i> My Cart</a></li>
+                <li><a href="/myorders"><i class="fas fa-phone"></i>My Order</a></li>
+                <li><a href="/favourite"><i class="fas fa-heart"></i>My Favourite</a></li>
+              
+                <li><a href="/"><i class="fas fa-sign-out"></i>Log Out</a></li>
+            </ul>
+            
+        </div>
+    </label>
+    <i class="fa-solid fa-utensils fa-2x fa-fw" style="margin-top: 15px;margin-left: 150px;"></i>
+   <img alt="Logo"  src="/static/image/logo2.png" style="height: 60px;margin-top: 5px;">
+    <div class="slogo" style="margin-left: 200px;">
+    <input class="inp1" type="text"  placeholder="Search" style="background-image: url(/static/image/back2.jpg); background-size: cover;"><i class="fa-solid fa-magnifying-glass"></i>
+    
+</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul id="flash-messages" style="width: fit-content; ">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+</div>
+<div class="continerss">
+    <div class="image-1">
+        <a href="/biryani"><img src="/static/image/biryaniavenue.jpeg" alt="collection" width="230px" height="180px" style="border-radius: 30px;" ></a>
+        <h4 style="display: none;">Biryani avenue Chicken Biryani Mutton biryani beef biryani bucket briyani prawn biryani egg biryani chicken 65 biryani grill thandoori</h4>
+        <h4 >Biryani Avenue</h4>
+        <h5>Rating : 4.8<i class="fas fa-star"></i></h5>
+        <h5>Kodambakkam</h5>
+
+    </div>
+    <div class="image-1">
+        <a href="/hotel"><img src="/static/image/aachi mess.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+        
+        <h4 style="display: none;">Biryani parotta chickenrice pongal noodles veg rice chapathi idly dosa Aachi Mess Chicken rice Chicken Biryani Mutton chickennoodles biryani beef briyani bucket biryani prawn biryani egg briyani chicken 65 briyani </h4>
+        <h4>Aachi Mess</h4>
+        <h5>Rating : 4.9<i class="fas fa-star"></i></h5>
+        <h5>T Nagar</h5>
+   </div>
+   <div class="image-1">
+    <a href="/kfc"><img src="/static/image/kfc.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+    <h4 style="display: none;">Kfc burger french fires cheese chicken hot wings popcorn bonelesschicken</h4>
+    <h4>KFC </h4>
+    <h5>Rating : 4.8<i class="fas fa-star"></i></h5>
+    <h5>Nungabakkam</h5>
+</div>
+        
+    
+    <div class="image-1">
+        <a href="/saravana"><img src="/static/image/veg.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+        <h4 style="display: none;">saravana bavan parotta chapathi idly dosa pongal plaindosa gobichilli vegbiryani meals poori vegfiredrice vegnoodles  Birayani</h4>
+        <h4>Saravana Baavan </h4>
+        <h5>Rating : 4.6<i class="fas fa-star"></i></h5>
+        <h5>choolimedu</h5>
+
+    </div>
+    
+    <div class="image-1">
+       <a href="/burger"> <img src="/static/image/fastfood.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+       <h4 style="display: none;">Burggers_King cheese burger french fires chickenburger chillichicken pulledchicken potta fry sandwich panner</h4>
+        <h4>Burggers_King</h4>
+        <h5>Rating : 4.3<i class="fas fa-star"></i></h5>
+        <h5>Vadapalani</h5>
+
+    </div>
+   
+    <div class="image-1">
+       <a href="/cakes"> <img src="/static/image/cakes.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+       <h4 style="display: none;">Lovable Cakes shop strawberry vanilla banana pineapple oreo cake   butterscoh black forest chocolate icecake</h4>
+        <h4>Loveable Cake Shop</h4>
+        <h5>Rating : 4.5<i class="fas fa-star"></i></h5>
+        <h5>Kodambakkam</h5>
+
+    </div>
+    <div class="image-1">
+        <a href="/pizza"><img src="/static/image/pizza.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+        <h4 style="display: none;"> dominno's pizza cheese corn pizza doble chesse margherita panner deluxe vegggige pizza 4chesse chicken golden  chicken fiesta</h4>
+        <h4>Domiino's Pizza</h4>
+        <h5>Rating : 4.3<i class="fas fa-star"></i></h5>
+        <h5>T Nagar</h5>
+    </div>
+    
+    <div class="image-1">
+        <a href="/uniq"><img src="/static/image/uniquesri.jpeg" alt="collection" width="230px" height="180px"style="border-radius: 30px;"></a>
+        <h4 style="display: none;"> unique restraunt Biryani parotta firedrice chickenrice pongal noodles vegrice chickenrice chickennoodles chapathi idly dosa Chicken Biryani Mutton biryani beef briyani bucket biryani prawn briyani egg briyani chicken 65 briyani</h4>
+        <h4>UNIQUE Restraunt</h4>
+        <h5>Rating : 4.4<i class="fas fa-star"></i></h5>
+        <h5>Kodambakkam</h5>
+    </div>
+    
+
+    </div>
+    
+
+    </div>
+    
+ </div>
+</form>
+<script>
+    var full_continers=document.querySelector(".continerss")
+var elements=full_continers.querySelectorAll("div")
+var searchh=document.querySelector(".slogo")
+searchh.addEventListener("keyup",function()
+{
+    var entervalue=event.target.value.toUpperCase()
+    for(var i=0;i<elements.length;i++){
+        var valueh4=elements[i].querySelector("h4").textContent
+        
+        if(valueh4.toUpperCase().indexOf(entervalue)<0  ){
+            elements[i].style.display="none"
+        }
+        else{
+            elements[i].style.display="block"
+    }
+}
+
+});
+
+</script>
+    
+</body>
+</html>

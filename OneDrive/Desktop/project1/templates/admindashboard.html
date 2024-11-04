@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+    <style>
+    #flash-messages {
+        background: #753ce7;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.5s ease;
+        opacity: 1;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    #flash-messages.fade-out {
+        opacity: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin: 5px 0;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flashMessages = document.getElementById('flash-messages');
+            if (flashMessages) {
+                setTimeout(() => {
+                    flashMessages.classList.add('fade-out');
+                }, 5000); // 5 seconds
+            }
+        });
+        </script>
+    <form action="{{ url_for('dashboard') }}"></form>
+    <div class="sidebar">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul id="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <a href="/add_admin"><i class="fas fa-user-tie"></i> Add Admin</a>
+        <a href="/remove_admin"><i class="fas fa-inbox"></i> Remove Admin</a>
+        <a href="/currentorder"><i class="fas fa-image"></i> Current Order</a>
+       
+        <a href="/search_customer"><i class="fas fa-code"></i> Search Customer</a>
+        <a href="/update_password"><i class="fas fa-exclamation-triangle"></i> Update Password</a>
+        <a href="/"><i class="fas fa-user"></i> Log Out</a>
+    </div>
+
+    <div class="header">
+        <div class="profile">
+            <img alt="Profile picture of the administrator" src="/static/image/admin photo.png" width="40" height="40"/>
+            <div>
+                <div class="name" style="color: black;">{{ username }}</div>
+                <div class="role" style="color: black;">Administrator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="breadcrumb">
+            <a href="#">Home</a>
+        </div>
+        <div class="cards">
+            <div class="card user">
+                <i class="fas fa-user"></i>
+                <div>Total User</div>
+                <div>{{total_users}}</div>
+            </div>
+            <div class="card clients">
+                <i class="fas fa-file-alt"></i>
+                <div>Clients</div>
+                <div>{{ total_clients }}</div>
+            </div>
+            <div class="card projects">
+                <i class="fa-solid fa-money-bill"></i>
+                <div>Highest Sold Food</div>
+                <div>{{ highest_sold_food }}</div>
+            </div>
+        </div>
+        <div class="ads">
+            <img src="/static/image/dash ad image.jpg" alt="Advertisement">
+        </div>
+    </div>
+</body>
+</html>

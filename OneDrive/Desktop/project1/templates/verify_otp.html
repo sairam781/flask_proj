@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='verify.css') }}">
+</head>
+<body>
+    <h1>Verify OTP</h1>
+    <form method="POST">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" name="otp" required><br>
+        <input type="submit" value="Verify">
+    </form>
+    <p><a href="{{ url_for('signin') }}">Resend OTP</a></p>
+</body>
+</html>

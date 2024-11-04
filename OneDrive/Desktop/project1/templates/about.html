@@ -1,0 +1,90 @@
+<html lang="en"></html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+
+<body>
+<div class="header">
+    <i class="fa-solid fa-utensils fa-2x fa-fw"></i>
+    <img alt="Logo" src="/static/image/logo2.png">
+    <div class="nav-links">
+        <a href="/">HOME</a>
+        <a href="/about" id="about-link">ABOUT</a>
+        <a href="/signin"><i class="fas fa-user icon"></i> SIGN IN</a>
+        <a href="/login"><i class="fas fa-user icon"></i> LOG IN</a>
+        <a href="/admin"><i class="fa-solid fa-user-tie"></i> ADMIN</a>  
+    </div>
+</div>
+
+<!-- About section that will slide in -->
+<div class="content1">
+    <div class="content">
+        <h1>We are the people who<br> make up Untitled UI</h1>
+        <p style="color: gray; margin-left: 50px; margin-right: 30px;">
+            Our philosophy is simple; hire great people and give them the resources and support to do their best work.
+        </p>
+    </div>
+</div>
+
+<!-- About page content -->
+<div class="about-page" id="about-page" style="text-align: center;">
+    <h2>About Us</h2>
+    <p>This is where your 'About' content will be placed. It will animate from bottom to top.</p>
+</div>
+
+<!-- Team members section that will slide in -->
+<div class="team-members">
+    <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Owen Garcia">
+        <h3>Rogul</h3>
+        <p class="role">Frontend Developer</p>
+        <p>Former frontend dev for Linear, Coinbase, and Postscript.</p>
+    </div>
+    <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Caitlyn King">
+        <h3>Srikanth</h3>
+        <p class="role">Product Designer</p>
+        <p>Founding design team at Figma. Former Pleo, Stripe, and Tile.</p>
+    </div>
+    <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Ashwin Santiago">
+        <h3>Sivanesh</h3>
+        <p class="role">Engineering Manager</p>
+        <p>Lead engineering teams at Netflix, Pitch, and Protocol Labs.</p>
+    </div>
+    <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Sienna Hewitt">
+        <h3>Praveen</h3>
+        <p class="role">Founder & CEO</p>
+        <p>Former co-founder of Opendoor. Early staff at Spotify and Clearbit.</p>
+    </div>
+    <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Kyla Clay">
+        <h3>Sai</h3>
+        <p class="role">UX Researcher</p>
+        <p>Lead user research for Slack. Contractor for Netflix and Udacity.</p>
+    </div>
+</div>
+
+<script>
+    // Selecting the 'About' link and the content sections
+    const aboutLink = document.getElementById('about-link');
+    const content1 = document.querySelector('.content1');
+    const aboutPage = document.getElementById('about-page');
+    const teamMembers = document.querySelector('.team-members');
+
+    // Adding event listener for click on 'About' link
+    aboutLink.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+        content1.classList.add('active'); // Add class to trigger animation for content1
+        aboutPage.classList.add('active'); // Add class to trigger animation for about page
+        teamMembers.classList.add('active'); // Add class to trigger animation for team members
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* Basic styling for the cart */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Food Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% set total = namespace(value=0) %}
+            {% for orders in order %}
+            <tr>
+                <td>{{ orders[0] }}</td>
+                <td>{{ orders[2] }}</td>
+                <td>{{ orders[3] }}</td>
+                <td>${{ orders[4] }}</td>
+                
+            </tr>
+            {% set total.value = total.value + orders[3]  %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Total: ${{ total.value }}</h4>
+    <a href="/buy1"><h3>BUY NOW</h3></a>
+</body>
+</html>

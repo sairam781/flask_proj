@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Customer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-container input[type="submit"] {
+            padding: 10px;
+            border: none;
+            background-color: #753ce7;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-container input[type="submit"]:hover {
+            background-color: #5a2a9a;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .results th, .results td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .results th {
+            background-color: #753ce7;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <form method="POST" action="{{ url_for('search_customer') }}">
+            <input type="text" name="search_query" placeholder="Search by username, email, or phone..." required>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+    <div class="results">
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in results %}
+                        <tr>
+                            <td>{{ user[1] }}</td>  <!-- Assuming username is the second column -->
+                            <td>{{ user[2] }}</td>  <!-- Assuming email is the third column -->
+                            <td>{{ user[3] }}</td>  <!-- Assuming phone is the fourth column -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found for your search.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
